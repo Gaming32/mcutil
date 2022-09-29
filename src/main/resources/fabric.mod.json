@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "mcutil",
+  "version": "${version}",
+  "name": "MCUtil",
+  "description": "Various utilities for Minecraft (not hacks)",
+  "authors": [
+    "Gaming32"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "io.github.gaming32.mcutil.client.MCUtilClient"
+    ],
+    "modmenu": [
+      "io.github.gaming32.mcutil.compat.MCUtilModMenuCompat"
+    ]
+  },
+  "mixins": [
+    "mcutil.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric": "*",
+    "minecraft": "1.19.2"
+  }
+}
