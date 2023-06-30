@@ -24,7 +24,7 @@ public class MixinConnection {
         MCUtilClient.lastReceivedPacket = System.currentTimeMillis();
     }
 
-    @Mixin(targets = "net.minecraft.network.ClientConnection$1")
+    @Mixin(targets = "net.minecraft.network.Connection$1")
     public static class Anonymous1 {
         @WrapOperation(
             method = "initChannel(Lio/netty/channel/Channel;)V",
