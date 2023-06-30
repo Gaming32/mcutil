@@ -22,8 +22,8 @@ public class MCUtilConfig implements ConfigData {
     public static class NotResponding {
         public boolean enabled = true;
         public long minTime = 5000;
-        public float x = 10;
-        public float y = 10;
+        public int x = 10;
+        public int y = 10;
         public boolean textShadow = true;
     }
 }

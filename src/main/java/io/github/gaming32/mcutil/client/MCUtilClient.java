@@ -23,7 +23,7 @@ public class MCUtilClient implements ClientModInitializer {
     public void onInitializeClient() {
         AutoConfig.register(MCUtilConfig.class, GsonConfigSerializer::new);
 
-        HudRenderCallback.EVENT.register((matrices, tickDelta) -> {
+        HudRenderCallback.EVENT.register((graphics, tickDelta) -> {
             final Minecraft minecraft = Minecraft.getInstance();
             //noinspection DataFlowIssue
             if (
@@ -41,15 +41,9 @@ public class MCUtilClient implements ClientModInitializer {
                             Component.literal(getTimeSinceLastPacket() / 100 / 10.0 + "s")
                                 .withStyle(ChatFormatting.RED)
                         );
-                if (config.textShadow) {
-                    minecraft.font.drawShadow(
-                        matrices, text, config.x, config.y, 0xffffffff
-                    );
-                } else {
-                    minecraft.font.draw(
-                        matrices, text, config.x, config.y, 0xffffffff
-                    );
-                }
+                graphics.drawString(
+                    minecraft.font, text, config.x, config.y, 0xffffffff, config.textShadow
+                );
             }
         });
 
