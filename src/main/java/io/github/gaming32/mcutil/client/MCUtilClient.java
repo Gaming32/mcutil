@@ -8,9 +8,9 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import org.slf4j.Logger;
 
 @Environment(EnvType.CLIENT)
@@ -24,21 +24,29 @@ public class MCUtilClient implements ClientModInitializer {
         AutoConfig.register(MCUtilConfig.class, GsonConfigSerializer::new);
 
         HudRenderCallback.EVENT.register((matrices, tickDelta) -> {
-            if (MinecraftClient.getInstance().options.debugEnabled) return;
+            final Minecraft minecraft = Minecraft.getInstance();
+            //noinspection DataFlowIssue
+            if (
+                minecraft.options.renderDebug || (
+                    minecraft.hasSingleplayerServer() &&
+                    !minecraft.getSingleplayerServer().isPublished() &&
+                    minecraft.isPaused()
+                )
+            ) return;
             final MCUtilConfig.NotResponding config = getConfig().notResponding;
             if (config.enabled && getTimeSinceLastPacket() > config.minTime) {
-                final Text text =
-                    Text.literal("Server not responding for ")
+                final Component text =
+                    Component.literal("Server not responding for ")
                         .append(
-                            Text.literal(getTimeSinceLastPacket() / 100 / 10.0 + "s")
-                                .formatted(Formatting.RED)
+                            Component.literal(getTimeSinceLastPacket() / 100 / 10.0 + "s")
+                                .withStyle(ChatFormatting.RED)
                         );
                 if (config.textShadow) {
-                    MinecraftClient.getInstance().textRenderer.drawWithShadow(
+                    minecraft.font.drawShadow(
                         matrices, text, config.x, config.y, 0xffffffff
                     );
                 } else {
-                    MinecraftClient.getInstance().textRenderer.draw(
+                    minecraft.font.draw(
                         matrices, text, config.x, config.y, 0xffffffff
                     );
                 }

@@ -10,6 +10,9 @@ public class MCUtilConfig implements ConfigData {
     public boolean showTabSkinsInOffline = true;
 
     @ConfigEntry.Gui.Tooltip
+    public boolean alwaysAllowTabList = true;
+
+    @ConfigEntry.Gui.Tooltip
     public int connectionTimeout = 0;
 
     @ConfigEntry.Gui.CollapsibleObject

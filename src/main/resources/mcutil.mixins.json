@@ -7,11 +7,12 @@
     "defaultRequire": 1
   },
   "client": [
-    "MixinDebugHud",
-    "MixinPlayerListHud"
+    "MixinDebugScreenOverlay",
+    "MixinGui",
+    "MixinTabOverlay"
   ],
   "mixins": [
-    "MixinClientConnection",
-    "MixinClientConnection$Anonymous1"
+    "MixinConnection",
+    "MixinConnection$Anonymous1"
   ]
 }
