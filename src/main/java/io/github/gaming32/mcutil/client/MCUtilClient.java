@@ -27,7 +27,7 @@ public class MCUtilClient implements ClientModInitializer {
             final Minecraft minecraft = Minecraft.getInstance();
             //noinspection DataFlowIssue
             if (
-                minecraft.options.renderDebug || (
+                minecraft.getDebugOverlay().showDebugScreen() || (
                     minecraft.hasSingleplayerServer() &&
                     !minecraft.getSingleplayerServer().isPublished() &&
                     minecraft.isPaused()
