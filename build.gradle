@@ -10,12 +10,21 @@ repositories {
     maven { url "https://maven.shedaniel.me/" }
     maven { url "https://maven.terraformersmc.com/releases/" }
     maven { url "https://jitpack.io" }
+    maven {
+        name = "ParchmentMC"
+        url = "https://maven.parchmentmc.org"
+    }
 }
 
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings loom.officialMojangMappings()
+    mappings(loom.layered {
+        officialMojangMappings {
+            nameSyntheticMembers = true
+        }
+        parchment("org.parchmentmc.data:parchment-1.20.2:2023.10.22@zip")
+    })
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modApi("me.shedaniel.cloth:cloth-config-fabric:13.0.121") {

@@ -2,6 +2,7 @@
   "text.autoconfig.mcutil.option.showTabSkinsInOffline": "Show Tab Menu Heads in Offline Mode",
   "text.autoconfig.mcutil.option.alwaysAllowTabList": "Always allow tab list",
   "text.autoconfig.mcutil.option.alwaysAllowTabList.@Tooltip": "Allow the tab list even while alone in a singleplayer world",
+  "text.autoconfig.mcutil.option.useNumericPingDisplay": "Use numeric ping display",
   "text.autoconfig.mcutil.option.connectionTimeout": "Connection Timeout (seconds, or 0 to remove timeout)",
   "text.autoconfig.mcutil.option.connectionTimeout.@Tooltip": "Note: Requires reconnect",
   "text.autoconfig.mcutil.option.notResponding": "Not Responding",

@@ -12,6 +12,8 @@ public class MCUtilConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     public boolean alwaysAllowTabList = true;
 
+    public boolean useNumericPingDisplay = true;
+
     @ConfigEntry.Gui.Tooltip
     public int connectionTimeout = 0;
 
